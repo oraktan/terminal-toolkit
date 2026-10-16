@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -u
 mode="${1:-${TOOLKIT_MODE:-server}}"
-printf 'Terminal Toolkit v0.2 | Profil: %s\n' "$mode"
+printf 'Terminal Toolkit v0.3 | Profil: %s\n' "$mode"
 for app in bash git nvim fzf fd rg tmux; do
   if [[ "$app" == nvim || "$app" == yazi ]]; then found="$(PATH="${TOOLKIT_SYSTEM_PATH:-$PATH}" type -P "$app" || true)"; else found="$(command -v "$app" || true)"; fi
   if [[ -n "$found" ]]; then printf '✓ %-10s %s\n' "$app" "$found"; else printf '✗ %-10s eksik\n' "$app"; fi

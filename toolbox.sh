@@ -23,7 +23,7 @@ export PATH="$ROOT/bin:$PATH"
 export TOOLKIT_STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/terminal-toolkit"
 mkdir -p -- "$TOOLKIT_STATE_DIR"
 if (( DOCTOR )); then exec bash "$ROOT/scripts/doctor.sh" "$MODE"; fi
-printf '🧰 Terminal Toolkit v0.2 (%s). doctor / nvim / yazi / vf / cf / exit\n' "$MODE"
+printf '🧰 Terminal Toolkit v0.3 (%s). doctor / nvim / yazi / vf / cf / exit\n' "$MODE"
 if [[ "$MODE" == full ]]; then
   for app in yazi bat lsd; do command -v "$app" >/dev/null 2>&1 || printf 'Not: %s kurulu degil (opsiyonel).\n' "$app"; done
 fi
