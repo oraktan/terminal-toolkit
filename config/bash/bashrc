@@ -1,0 +1,8 @@
+# An isolated interactive Bash session (no ~/.bashrc modification).
+[[ $- != *i* ]] && return
+HISTFILE="$TOOLKIT_STATE_DIR/bash_history"
+HISTSIZE=3000
+HISTFILESIZE=6000
+shopt -s histappend checkwinsize
+PS1='\[\e[1;36m\]🧰 \u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]$ '
+source "$TERMINAL_TOOLKIT_ROOT/config/bash/aliases.sh"

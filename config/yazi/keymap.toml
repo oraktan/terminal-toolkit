@@ -1,0 +1,9 @@
+[[mgr.prepend_keymap]]
+on = [ "g", "c" ]
+run = "cd ~/.config"
+desc = "Go to config"
+
+[[mgr.prepend_keymap]]
+on = [ "e" ]
+run = "shell 'nvim \"$@\"' --block"
+desc = "Edit in Neovim"
