@@ -30,3 +30,12 @@ ports() { if command -v ss >/dev/null 2>&1; then ss -tuln; elif command -v netst
 maxdosya() { local n="${1:-10}"; [[ "$n" =~ ^[0-9]+$ ]] || { echo 'Sayi gerekli' >&2; return 2; }; du -ah -- . 2>/dev/null | sort -rh | head -n "$n"; }
 duh() { du -h --max-depth=1 -- "${1:-.}" 2>/dev/null || du -h -d 1 -- "${1:-.}"; }
 doctor() { bash "$TERMINAL_TOOLKIT_ROOT/scripts/doctor.sh" "${TOOLKIT_MODE:-server}"; }
+
+# Dosya yollarinda buyuk/kucuk harf duyarsiz arama.
+fhere() {
+  if [ "$#" -ne 1 ]; then
+    printf 'Kullanim: fhere aranacak-ifade\n' >&2
+    return 2
+  fi
+  find . -iname "*$1*"
+}
