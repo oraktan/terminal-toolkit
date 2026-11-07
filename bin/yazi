@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+ROOT="${TERMINAL_TOOLKIT_ROOT:?Toolkit oturumunda calistirin}"
+SYSTEM_PATH="${TOOLKIT_SYSTEM_PATH:-/usr/local/bin:/usr/bin:/bin}"
+binary="$(PATH="$SYSTEM_PATH" type -P yazi || true)"
+if [[ -z "$binary" ]]; then printf 'yazi kurulu degil. doctor calistirin.\n' >&2; exit 127; fi
+# Only this application's process sees the toolkit XDG config.
+export XDG_CONFIG_HOME="$ROOT/config"
+export XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/terminal-toolkit"
+export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}/terminal-toolkit"
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}/terminal-toolkit"
+mkdir -p -- "$XDG_DATA_HOME" "$XDG_STATE_HOME" "$XDG_CACHE_HOME"
+exec "$binary" "$@"
