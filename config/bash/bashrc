@@ -6,3 +6,11 @@ HISTFILESIZE=6000
 shopt -s histappend checkwinsize
 PS1='\[\e[1;36m\]🧰 \u@\h\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]$ '
 source "$TERMINAL_TOOLKIT_ROOT/config/bash/aliases.sh"
+# Portable tools and optional prompt; only within Toolkit Bash.
+if [[ -x "$TERMINAL_TOOLKIT_ROOT/bin/starship" && -f "$TERMINAL_TOOLKIT_ROOT/apps/starship/.entry" ]]; then
+  export STARSHIP_CONFIG="$TERMINAL_TOOLKIT_ROOT/config/starship.toml"
+  eval "$("$TERMINAL_TOOLKIT_ROOT/bin/starship" init bash)"
+fi
+if [[ -x "$TERMINAL_TOOLKIT_ROOT/bin/fzf" && -f "$TERMINAL_TOOLKIT_ROOT/apps/fzf/.entry" ]]; then
+  eval "$("$TERMINAL_TOOLKIT_ROOT/bin/fzf" --bash)"
+fi

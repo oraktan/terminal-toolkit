@@ -1,0 +1,14 @@
+# Portable binaries are distributed through GitHub Releases
+/apps/
+
+# Python
+__pycache__/
+*.pyc
+*.bak
+
+# Local files
+.cache/
+.state/
+*.previous/
+setup-portable-toolkit.sh
+*.tar.gz

@@ -1,32 +1,70 @@
-# Terminal Toolkit v0.3
+# Terminal Toolkit Portable
 
-Taşınabilir, izole Bash + Neovim + Yazi çalışma ortamı. Kişisel shell ayarlarını değiştirmez.
+Linux x86_64 icin tasinabilir Bash, Neovim, Yazi, fzf, fd,
+ripgrep ve Starship ortami.
 
-## Başlatma
+Normal ~/.bashrc dosyasini degistirmez.
 
-```bash
-bash toolbox.sh --server
-bash toolbox.sh --full
-bash toolbox.sh --server --tmux
-bash toolbox.sh --doctor --full
-```
+## Destek hedefi
 
-`exit` ile çıkılır. `--tmux` için tmux kurulu olmalıdır.
+- Fedora
+- Ubuntu
+- Debian
+- Rocky Linux
+- AlmaLinux
+
+Fedora uzerinde test edilmistir. Diger dagitimlarda uyumluluk
+testleri gereklidir. Linux x86_64 ve uygun sistem kutuphaneleri
+gereklidir.
+
+## Kaynak koddan hazirlama
+
+Gereksinimler: Bash, Python 3 ve internet baglantisi.
+
+    git clone https://github.com/oraktan/terminal-toolkit.git
+    cd terminal-toolkit
+    python3 scripts/build-portable.py
+    bash toolbox.sh --doctor --full
+
+## Offline kullanim
+
+GitHub Releases bolumunden hazir Linux x86_64 arsivini indirin.
+
+    tar -xzf terminal-toolkit-linux-x86_64.tar.gz
+    cd terminal-toolkit
+    bash toolbox.sh --full
+
+Hazir arsiv uygulamalari icerir ve indirme gerektirmez.
+Hedef bilgisayarda Bash ve gerekli temel sistem kutuphaneleri
+bulunmalidir.
+
+## Baslatma
+
+    bash toolbox.sh --server
+    bash toolbox.sh --full
+    bash toolbox.sh --server --tmux
+    bash toolbox.sh --doctor --full
+
+tmux modu icin sistemde tmux kurulu olmalidir.
 
 ## Komutlar
 
-- Dosya: `ll`, `la`, `l`, `dir`, `..`, `...`, `....`, `home`, `downloads`, `croot`, `duf`
-- Arama: `ff`, `vf`, `cf`, `fif METIN`
-- Git: `gs`, `gd`, `gl`
-- Diğer: `v`, `vim`, `y`, `doctor`, `nedir`, `pyserve`, `untar DOSYA`
-- Ek fonksiyonlar: `config/bash/functions.sh`
+- Dosya: ll, la, l, dir, .., ..., ...., home, downloads, croot, duf
+- Arama: ff, vf, cf, fif METIN, fhere METIN
+- Git: gs, gd, gl
+- Editor: v, vim, y
+- Diger: doctor, nedir, pyserve, untar
 
-Neovim ve Yazi yapılandırmaları `bin/` wrapper'larıyla izole edilir. Mevcut sistem shell ayarları değiştirilmez.
+Ek fonksiyonlar: config/bash/functions.sh
 
-## Offline çalışma
+## Offline paket olusturma
 
-Bu repository şu anda eksiksiz, tüm sistemlerde bağımsız çalışan bir offline paket olarak doğrulanmamıştır. `bin/` altındaki wrapper'lar, gerçek programları ve onların bağımlılıklarını içermez. Hedef mimariye uygun binary'ler, runtime dosyaları ve gereken kütüphaneler ayrıca paketlenip test edilmelidir. `doctor` mevcut araçları gösterir; otomatik yükleme yapmaz.
+    python3 scripts/build-portable.py
+    bash scripts/package-offline.sh
 
-## Güvenlik
+Olusan arsiv varsayilan olarak proje klasorunun ust dizinine yazilir.
 
-Public repository'ye parola, token, SSH anahtarı veya kişisel sunucu bilgileri eklemeyin. Normal kullanıcıyla çalıştırın.
+## Guvenlik
+
+Parola, token, SSH anahtari veya ozel sunucu bilgilerini
+repository'ye eklemeyin. Normal kullanici yetkileriyle calistirin.
