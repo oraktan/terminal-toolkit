@@ -1,6 +1,6 @@
-# Terminal Toolkit v0.2
+# Terminal Toolkit v0.3
 
-Taşınabilir, geçici Bash + Neovim + Yazi çalışma ortamı. Rocky Linux, Fedora vb. Linux makinelerinde denenebilir. Sistem shell ayarlarını değiştirmez, kendiliğinden paket yüklemez.
+Taşınabilir, izole Bash + Neovim + Yazi çalışma ortamı. Kişisel shell ayarlarını değiştirmez.
 
 ## Başlatma
 
@@ -11,22 +11,22 @@ bash toolbox.sh --server --tmux
 bash toolbox.sh --doctor --full
 ```
 
-`exit` ile geçici shell'den çık. `--tmux` oturumu sunucuda korur; `Ctrl+B`, sonra `D` ile ayrıl.
+`exit` ile çıkılır. `--tmux` için tmux kurulu olmalıdır.
 
 ## Komutlar
 
-`doctor`, `nvim`, `yazi`, `vf`, `cf`, `ff`, `fif`, `gs`, `gd`, `gl`, `croot`.
+- Dosya: `ll`, `la`, `l`, `dir`, `..`, `...`, `....`, `home`, `downloads`, `croot`, `duf`
+- Arama: `ff`, `vf`, `cf`, `fif METIN`
+- Git: `gs`, `gd`, `gl`
+- Diğer: `v`, `vim`, `y`, `doctor`, `nedir`, `pyserve`, `untar DOSYA`
+- Ek fonksiyonlar: `config/bash/functions.sh`
 
-Neovim kendi `config/nvim/init.vim` dosyasını kullanır. Sistem Neovim ayarını değiştirmez. `Space+w` kaydet, `Space+q` çık, `Space+c` Markdown kod bloğu. Eklenti kurulumu otomatik yapılmaz. Yazi yapılandırması ayrı yüklenir.
+Neovim ve Yazi yapılandırmaları `bin/` wrapper'larıyla izole edilir. Mevcut sistem shell ayarları değiştirilmez.
 
-## Güvenlik ve sınırlar
+## Offline çalışma
 
-- Programlar sistemde mevcut olmalı; `--full` yalnızca ek araçları bildirir, otomatik kurmaz.
-- `toolbox.sh` normal Bash oturumudur; `--tmux` için tmux kurulu olmalı.
-- Toolkit için Neovim/Yazi veri ve önbellek dizinleri kullanıcının ev dizininde ayrı tutulur ve `exit` ile silinmez.
-- Root yerine normal kullanıcı tercih edin. Public repoya SSH anahtarı, parola, token veya kişisel sunucu adresi koymayın.
-- macOS ve Windows için henüz test yapılmadı.
+Bu repository şu anda eksiksiz, tüm sistemlerde bağımsız çalışan bir offline paket olarak doğrulanmamıştır. `bin/` altındaki wrapper'lar, gerçek programları ve onların bağımlılıklarını içermez. Hedef mimariye uygun binary'ler, runtime dosyaları ve gereken kütüphaneler ayrıca paketlenip test edilmelidir. `doctor` mevcut araçları gösterir; otomatik yükleme yapmaz.
 
-## Public GitHub
+## Güvenlik
 
-Depoyu oluşturduktan sonra içerikleri commit edip push edin. GitHub'a kendiliğinden yüklenmez.
+Public repository'ye parola, token, SSH anahtarı veya kişisel sunucu bilgileri eklemeyin. Normal kullanıcıyla çalıştırın.
