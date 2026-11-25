@@ -1,11 +1,17 @@
 add_newline = true
-format = '[╭─](cyan)$directory$git_branch$git_status\n[╰─](cyan)$character'
+
+format = """
+[╭─](cyan)$directory$git_branch$git_status
+[╰─](cyan)$character"""
+
 [directory]
 style = 'bold blue'
 truncation_length = 3
+
 [git_branch]
 symbol = ' '
 style = 'bold purple'
+
 [character]
 success_symbol = '[❯](bold green)'
 error_symbol = '[❯](bold red)'
